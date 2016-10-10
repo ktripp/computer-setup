@@ -1,0 +1,27 @@
+
+# ssh config
+cat ~/.ssh/config.d/*  > ~/.ssh/config
+
+# virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+# for git aware prompt
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source $GITAWAREPROMPT/main.sh
+export PS1="\u \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\] \$ "
+export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+git config --global color.ui auto
+
+# for git autocomplete
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
+
+# aliases
+alias gp='git fetch && git pull'
+alias shell='./manage.py shell_plus'
+
