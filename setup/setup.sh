@@ -1,24 +1,13 @@
-# install pip
-sudo easy_install pip
-
 # install brew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# install git-aware-prompt
-mkdir ~/.bash
-cd ~/.bash
-git clone git://github.com/jimeh/git-aware-prompt.git
+# install zsh plugins
+brew install zsh zsh-autocomplete zsh-syntax-highlighting zsh-autosuggestions zsh-git-prompt
 
-# install virtualenv
-sudo pip install virtualenvwrapper
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# install mysql
-brew install mysql
-ln -sfv /usr/local/opt/mysql/*.plist
-launchctl load /usr/local/opt/mysql/homebrew.mxcl.mysql.plist 
-mysql_tzinfo_to_sql /usr/share/zoneinfo | sed -e "s/Local time zone must be set--see zic manual page/local/" | mysql -u root mysql
 
-# set up bash_profile
-cp git-completion.bash ~/.git-completion.bash
-cp bash_profile ~/.bash_profile
-source ~/.bash_profile
+# set up shell profile
+cp zshrc ~/.zshrc
+chsh -s $(which zsh)
+source ~/.zshrc
